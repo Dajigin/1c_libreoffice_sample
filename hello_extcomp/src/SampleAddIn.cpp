@@ -25,7 +25,7 @@
 #include <thread>
 
 #include "SampleAddIn.h"
-#include "libfcont.h"
+#include "hello.h"
 
 std::string SampleAddIn::extensionName() {
     return "Sample";

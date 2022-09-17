@@ -25,7 +25,7 @@ if (ANDROID)
             src/jnienv.cpp
             src/jnienv.h)
 endif ()
-
+link_directories(../libhello/bin)
 add_library(${TARGET} SHARED
         ${SOURCES})
 
@@ -72,5 +72,5 @@ if (ANDROID)
                 COMMAND ${CMAKE_STRIP} ${CMAKE_SHARED_LIBRARY_PREFIX}${TARGET}${CMAKE_SHARED_LIBRARY_SUFFIX})
     endif ()
 endif ()
-
+message(${CMAKE_SOURCE_DIR})
 target_link_libraries(SampleAddIn hello uno_cppu uno_sal uno_cppuhelpergcc3)
