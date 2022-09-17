@@ -67,6 +67,14 @@ ALL : \
 include $(SETTINGS)/stdtarget.mk
 $(OUT_COMP_BIN)/libhello.a : $(OUT_COMP_OBJ)/hello.o
 	ar rc $(OUT_COMP_BIN)/libhello.a $(OUT_COMP_OBJ)/hello.o
+
+$(OUT_COMP_BIN)/libhello_test : $(OUT_COMP_OBJ)/libhello_test.o $(OUT_COMP_BIN)/libhello.a
+	$(LINK) $(EXE_LINK_FLAGS) $(LINK_LIBS) -o $@ $< \
+	  $(CPPUHELPERLIB) $(CPPULIB) $(SALHELPERLIB) -L$(OUT_COMP_BIN) -lhello  $(SALLIB) $(STDC++LIB)
+
+$(OUT_COMP_OBJ)/libhello_test.o : ./src/libhello_test.cxx $(OUT_COMP_BIN)/libhello.a
+	g++ -c ./src/libhello_test.cxx $(CC_FLAGS) $(CC_INCLUDES) -I$(OUT_COMP_INC) $(CC_DEFINES) -o $(OUT_COMP_OBJ)/libhello_test.o
+
 $(OUT_COMP_OBJ)/hello.o : ./src/hello.cxx $(SDKTYPEFLAG)
 	-$(MKDIR) $(subst /,$(PS),$(@D))
 	$(CC) $(CC_FLAGS) $(CC_INCLUDES) -I$(OUT_COMP_INC) $(CC_DEFINES) $(CC_OUTPUT_SWITCH)$(subst /,$(PS),$@) $<
@@ -85,7 +93,7 @@ ifeq "$(OS)" "MACOSX"
 endif
 endif
 
-CpphelloExample : $(OUT_COMP_BIN)/libhello.a
+CpphelloExample : $(OUT_COMP_BIN)/libhello.a $(OUT_COMP_BIN)/libhello_test
 
 .PHONY: clean
 clean :

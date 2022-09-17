@@ -67,7 +67,7 @@ extern int hello() {
       std::string availableText = rText != nullptr ? "available" : "not available";
       std::cout << "Text " + availableText << std::endl;
 
-      rText->setString("Hello, world!");
+      rText->setString(OUString::createFromAscii("Hello, LibreOffice!!!"));
 
     } catch (css::uno::Exception &e) {
       std::cout << e.Message << std::endl;

@@ -3,3 +3,4 @@ libhello/inc/**
 libhello/misc/**
 libhello/obj/**
 hello_extcomp/tmp/**
+.vscode/**
