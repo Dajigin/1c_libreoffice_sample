@@ -44,6 +44,8 @@ private:
     variant_t currentDate();
 
     std::shared_ptr<variant_t> sample_property;
+
+    void hello_loffice();
 };
 
 #endif //SAMPLEADDIN_H

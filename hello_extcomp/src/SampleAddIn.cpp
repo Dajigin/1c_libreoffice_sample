@@ -49,6 +49,7 @@ SampleAddIn::SampleAddIn() {
     AddMethod(L"CurrentDate", L"ТекущаяДата", this, &SampleAddIn::currentDate);
     AddMethod(L"Assign", L"Присвоить", this, &SampleAddIn::assign);
     AddMethod(L"SamplePropertyValue", L"ЗначениеСвойстваОбразца", this, &SampleAddIn::samplePropertyValue);
+    AddMethod(L"Hello", L"Привет", this, &SampleAddIn::hello_loffice);
 
     // Method registration with default arguments
     //
@@ -124,4 +125,8 @@ variant_t SampleAddIn::currentDate() {
     localtime_r(&t, &current);
 #endif
     return current;
+}
+// Out params support option must be enabled for this to work
+void SampleAddIn::hello_loffice() {
+    hello();
 }
