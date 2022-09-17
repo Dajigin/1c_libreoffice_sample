@@ -65,8 +65,8 @@ ALL : \
 	CpphelloExample
 
 include $(SETTINGS)/stdtarget.mk
-$(OUT_COMP_BIN)/hello.a : $(OUT_COMP_OBJ)/hello.o
-	ar rc $(OUT_COMP_BIN)/hello.a $(OUT_COMP_OBJ)/hello.o
+$(OUT_COMP_BIN)/libhello.a : $(OUT_COMP_OBJ)/hello.o
+	ar rc $(OUT_COMP_BIN)/libhello.a $(OUT_COMP_OBJ)/hello.o
 $(OUT_COMP_OBJ)/hello.o : ./src/hello.cxx $(SDKTYPEFLAG)
 	-$(MKDIR) $(subst /,$(PS),$(@D))
 	$(CC) $(CC_FLAGS) $(CC_INCLUDES) -I$(OUT_COMP_INC) $(CC_DEFINES) $(CC_OUTPUT_SWITCH)$(subst /,$(PS),$@) $<
@@ -85,11 +85,11 @@ ifeq "$(OS)" "MACOSX"
 endif
 endif
 
-CpphelloExample : $(OUT_COMP_BIN)/hello.a
+CpphelloExample : $(OUT_COMP_BIN)/libhello.a
 
 .PHONY: clean
 clean :
 	-$(DELRECURSIVE) $(subst /,$(PS),$(OUT_COMP_INC))
 	-$(DELRECURSIVE) $(subst /,$(PS),$(OUT_COMP_GEN))
 	-$(DELRECURSIVE) $(subst /,$(PS),$(OUT_COMP_OBJ))
-	-$(DEL) $(subst \\,\,$(subst /,$(PS),$(OUT_BIN)/hello*))
+	-$(DEL) $(subst \\,\,$(subst /,$(PS),$(OUT_BIN)/libhello*))
