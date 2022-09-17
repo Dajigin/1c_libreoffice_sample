@@ -2,7 +2,7 @@
 if [ "$USER" != "root" ]
 then
     echo 'Ошибка: скрипт должен быть запущен от имени root. Используйтe команду для запуска:
-sudo ./loffice_libs.sh'
+sudo ./install_tools.sh'
     exit
 fi
 
