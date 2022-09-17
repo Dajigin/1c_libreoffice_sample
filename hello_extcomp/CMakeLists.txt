@@ -17,8 +17,8 @@ list(APPEND SOURCES
         src/Component.h
         src/SampleAddIn.cpp
         src/SampleAddIn.h
-        src/libfcont.a
-        src/libfcont.h)
+        ../libhello/bin/libhello.a
+        ../libhello/src/hello.h)
 
 if (ANDROID)
     list(APPEND SOURCES
@@ -73,4 +73,4 @@ if (ANDROID)
     endif ()
 endif ()
 
-target_link_libraries(SampleAddIn fcont uno_cppu uno_sal uno_cppuhelpergcc3)
+target_link_libraries(SampleAddIn hello uno_cppu uno_sal uno_cppuhelpergcc3)
