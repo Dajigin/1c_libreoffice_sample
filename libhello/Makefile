@@ -66,6 +66,7 @@ ALL : \
 
 include $(SETTINGS)/stdtarget.mk
 $(OUT_COMP_BIN)/libhello.a : $(OUT_COMP_OBJ)/hello.o
+	mkdir ./bin
 	ar rc $(OUT_COMP_BIN)/libhello.a $(OUT_COMP_OBJ)/hello.o
 
 $(OUT_COMP_BIN)/libhello_test : $(OUT_COMP_OBJ)/libhello_test.o $(OUT_COMP_BIN)/libhello.a
