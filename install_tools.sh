@@ -6,4 +6,4 @@ sudo ./install_tools.sh'
     exit
 fi
 
-apt install libreoffice-dev-common libreoffice-dev build-essential cmake
+apt install libreoffice-dev-common libreoffice-dev build-essential cmake uuid-dev
